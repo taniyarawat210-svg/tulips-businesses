@@ -1,184 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tulips Businesses</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tulips Businesses</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #fff0f5;
-    }
+<style>
+body { margin:0; font-family:'Poppins', sans-serif; background:#fff0f5; }
 
-    header {
-      background: linear-gradient(45deg, #ff6f91, #ff9671);
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+header {
+  background: linear-gradient(45deg,#ff6f91,#ff9671);
+  color:white;
+  text-align:center;
+  padding:20px;
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 20px;
-      background: white;
-      position: sticky;
-      top: 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+.products {
+  column-count:2;
+  column-gap:15px;
+  padding:15px;
+}
 
-    nav input {
-      padding: 8px;
-      width: 200px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-    }
+@media(min-width:768px){
+  .products{ column-count:4;}
+}
 
-    .filters button {
-      margin: 5px;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 20px;
-      background: #ff6f91;
-      color: white;
-      cursor: pointer;
-    }
+.card {
+  background:white;
+  display:inline-block;
+  margin-bottom:15px;
+  width:100%;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
 
-    .products {
-      column-count: 2;
-      column-gap: 15px;
-      padding: 15px;
-    }
+.card img { width:100%; }
 
-    @media(min-width: 768px) {
-      .products { column-count: 4; }
-    }
+.card-content { padding:10px; }
 
-    .card {
-      background: white;
-      display: inline-block;
-      margin-bottom: 15px;
-      width: 100%;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.03);
-    }
-
-    .card img {
-      width: 100%;
-    }
-
-    .card-content {
-      padding: 10px;
-    }
-
-    .btn {
-      display: block;
-      text-align: center;
-      padding: 8px;
-      margin-top: 8px;
-      background: #ff6f91;
-      color: white;
-      border-radius: 10px;
-      text-decoration: none;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #333;
-      color: white;
-    }
-  </style>
+.btn {
+  display:block;
+  text-align:center;
+  padding:8px;
+  margin-top:8px;
+  background:#ff6f91;
+  color:white;
+  border-radius:10px;
+  text-decoration:none;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>Tulips Businesses 🌷</h1>
-  <p>Viral Pinterest Products | Amazon & Meesho Finds</p>
+<h1>Tulips Businesses 🌷</h1>
+<p>Click → Shop → Earn 💸</p>
 </header>
 
-<nav>
-  <div class="filters">
-    <button onclick="filterProducts('all')">All</button>
-    <button onclick="filterProducts('fashion')">Fashion</button>
-    <button onclick="filterProducts('decor')">Home Decor</button>
-    <button onclick="filterProducts('beauty')">Beauty</button>
-  </div>
-  <input type="text" id="search" placeholder="Search products..." onkeyup="searchProducts()">
-</nav>
-
-<section class="products" id="productList">
-
-  <div class="card" data-category="fashion">
-    <img src="https://via.placeholder.com/300x400">
-    <div class="card-content">
-      <h3>Trendy Handbag</h3>
-      <a href="#" class="btn">Shop Now</a>
-    </div>
-  </div>
-
-  <div class="card" data-category="decor">
-    <img src="https://via.placeholder.com/300x500">
-    <div class="card-content">
-      <h3>Aesthetic Lamp</h3>
-      <a href="#" class="btn">Shop Now</a>
-    </div>
-  </div>
-
-  <div class="card" data-category="beauty">
-    <img src="https://via.placeholder.com/300x450">
-    <div class="card-content">
-      <h3>Makeup Kit</h3>
-      <a href="#" class="btn">Shop Now</a>
-    </div>
-  </div>
-
-  <div class="card" data-category="fashion">
-    <img src="https://via.placeholder.com/300x420">
-    <div class="card-content">
-      <h3>Minimal Jewelry</h3>
-      <a href="#" class="btn">Shop Now</a>
-    </div>
-  </div>
-
-</section>
-
-<footer>
-  <p>© 2026 Tulips Businesses | Grow with Pinterest 💖</p>
-</footer>
+<section class="products" id="productList"></section>
 
 <script>
-  function filterProducts(category) {
-    let cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-      if(category === 'all' || card.dataset.category === category) {
-        card.style.display = 'inline-block';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
 
-  function searchProducts() {
-    let input = document.getElementById('search').value.toLowerCase();
-    let cards = document.querySelectorAll('.card');
-
-    cards.forEach(card => {
-      let title = card.innerText.toLowerCase();
-      card.style.display = title.includes(input) ? 'inline-block' : 'none';
-    });
+// 🔥 EASY EDIT SECTION (ONLY EDIT THIS)
+let products = [
+  {
+    name: "Trendy Handbag",
+    image: "https://via.placeholder.com/300x400",
+    link: "#"
+  },
+  {
+    name: "Aesthetic Lamp",
+    image: "https://via.placeholder.com/300x500",
+    link: "#"
+  },
+  {
+    name: "Makeup Kit",
+    image: "https://via.placeholder.com/300x450",
+    link: "#"
   }
+];
+// 🔥 END SECTION
+
+let container = document.getElementById("productList");
+
+products.forEach(p => {
+  container.innerHTML += `
+    <div class="card">
+      <img src="${p.image}">
+      <div class="card-content">
+        <h3>${p.name}</h3>
+        <a href="${p.link}" class="btn">Shop Now</a>
+      </div>
+    </div>
+  `;
+});
+
 </script>
 
 </body>
