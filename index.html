@@ -1,111 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tulips Businesses</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tulips Businesses</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+    }
 
-<style>
-body { margin:0; font-family:'Poppins', sans-serif; background:#fff0f5; }
+    header {
+      background: #ff4d88;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+    }
 
-header {
-  background: linear-gradient(45deg,#ff6f91,#ff9671);
-  color:white;
-  text-align:center;
-  padding:20px;
-}
+    .container {
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-.products {
-  column-count:2;
-  column-gap:15px;
-  padding:15px;
-}
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-@media(min-width:768px){
-  .products{ column-count:4;}
-}
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-.card {
-  background:white;
-  display:inline-block;
-  margin-bottom:15px;
-  width:100%;
-  border-radius:15px;
-  overflow:hidden;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      text-align: center;
+    }
 
-.card img { width:100%; }
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
 
-.card-content { padding:10px; }
+    .card h3 {
+      margin: 10px 0;
+    }
 
-.btn {
-  display:block;
-  text-align:center;
-  padding:8px;
-  margin-top:8px;
-  background:#ff6f91;
-  color:white;
-  border-radius:10px;
-  text-decoration:none;
-}
-</style>
+    .btn {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #ff4d88;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #e6005c;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-<h1>Tulips Businesses 🌷</h1>
-<p>Click → Shop → Earn 💸</p>
-</header>
+<header>🌷 Tulips Businesses</header>
 
-<section class="products" id="productList"></section>
+<div class="container">
+  <h1>Trending Deals Just For You 🔥</h1>
 
-<script>
+  <div class="products">
 
-// 🔥 EASY EDIT SECTION (ONLY EDIT THIS)
-let products = [
-  {
-    name: "Trendy Handbag",
-    image: "https://via.placeholder.com/300x400",
-    link: "#"
-  },
-  {
-    name: "Aesthetic Lamp",
-    image: "https://via.placeholder.com/300x500",
-    link: "#"
-  body>
-   <!-- <a href="https://amzn.to/3Q6trTE" target="_blank">
-  <img src="YOUR-IMAGE-LINK-HERE" alt="Product" width="200">
-</a>
-<p>Click to buy this amazing product!</p>-->
-</body>
-},
-  {
-    name: "Makeup Kit",
-    image: "https://via.placeholder.com/300x450",
-    link: "#"
-  }
-];
-// 🔥 END SECTION
-
-let container = document.getElementById("productList");
-
-products.forEach(p => {
-  container.innerHTML += `
     <div class="card">
-      <img src="${p.image}">
-      <div class="card-content">
-        <h3>${p.name}</h3>
-        <a href="${p.link}" class="btn">Shop Now</a>
-      </div>
+      <img src="https://via.placeholder.com/300" alt="Product 1">
+      <h3>Best Amazon Deal</h3>
+      <p>Limited time offer. Grab now!</p>
+      <a class="btn" href="https://amzn.to/3Q6trTE" target="_blank">Shop Now</a>
     </div>
-  `;
-});
 
-</script>
+    <div class="card">
+      <img src="https://via.placeholder.com/300" alt="Product 2">
+      <h3>Hot Selling Product</h3>
+      <p>Top rated product trending today.</p>
+      <a class="btn" href="https://amzn.to/4m2AFnN" target="_blank">Buy Now</a>
+    </div>
+
+  </div>
+</div>
 
 </body>
 </html>
